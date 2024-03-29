@@ -1,11 +1,11 @@
 export function factoryMedia (media){
     switch (media.type) {
         case 'image' in media:
-            mediaTemplate(media).getPictureMedia()
+            mediaTemplate(media).getPictureMedia(media)
         break;
 
         case 'video' in media:
-            mediaTemplate(media).getVideoMedia()
+            mediaTemplate(media).getVideoMedia(media)
         break;
 
     }
@@ -23,7 +23,7 @@ export function mediaTemplate() {
     const mediaArticle = document.createElement('article');
 
     const mediaDescription = document.createElement('div');
-    description.className = 'mediaDescription';
+    mediaDescription.className = 'mediaDescription';
 
     const mediaTitle = document.createElement('p');
     mediaTitle.className = 'mediaTitle';
@@ -61,9 +61,12 @@ export function mediaTemplate() {
 
         mediaArticle.appendChild(pictureInput);
     }
+    
 
     return { title, image, video, likes, getPictureMedia, getVideoMedia }
 }
+
+
     
 
 
