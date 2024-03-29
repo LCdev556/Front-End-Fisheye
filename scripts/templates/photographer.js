@@ -1,4 +1,4 @@
- function photographerTemplate(photographer) {
+ export function photographerTemplate(photographer) {
     const { name, portrait, city, tagline, price, country, id } = photographer;
 
     const picture = `assets/photographers/${portrait}`;
@@ -70,7 +70,7 @@
         descriptionContainer.appendChild(h2);
         descriptionContainer.appendChild(localisation);
         descriptionContainer.appendChild(description);
-        return (article);
+        //return (article);
     }
 
     

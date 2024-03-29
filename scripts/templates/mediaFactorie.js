@@ -1,4 +1,4 @@
-function factoryMedia (media){
+export function factoryMedia (media){
     switch (media.type) {
         case 'image' in media:
             mediaTemplate(media).getPictureMedia()
@@ -11,7 +11,7 @@ function factoryMedia (media){
     }
 }
 
-function mediaTemplate() {
+export function mediaTemplate() {
 
     const { title, image, video, likes } = media;
 
@@ -37,10 +37,9 @@ function mediaTemplate() {
     heartIcon.className = 'heartIcon';
     heartIcon.textContent = <i class="fa-solid fa-heart"></i>;*/ 
 
-    mediaArticle.appendChild(videoInput);
     mediaDescription.appendChild(mediaTitle);
     mediaDescription.appendChild(mediaLikeScore);
-    mediaDescription.appendChild(heartIcon);
+    //mediaDescription.appendChild(heartIcon);
     mediaArticle.appendChild(mediaDescription);
     mediaSection.appendChild(mediaArticle);
 
