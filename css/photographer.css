@@ -153,3 +153,30 @@ form textarea {
     font-size: 18px;
     margin: auto;
 }
+
+.photographe-media{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.media{
+    display:flex ;
+    flex-direction: column-reverse;
+    height: auto;
+    justify-content: space-between;
+}
+
+.videoInput{
+    border: red solid;
+    height: 200px;
+    width: 200px;
+}
+
+.pictureInput{
+    border: red solid;
+    height: 200px;
+    width: 200px;
+}

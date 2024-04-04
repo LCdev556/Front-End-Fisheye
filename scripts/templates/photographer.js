@@ -1,4 +1,6 @@
- export function photographerTemplate(photographer) {
+
+
+export function photographerTemplate(photographer) {
     const { name, portrait, city, tagline, price, country, id } = photographer;
 
     const picture = `assets/photographers/${portrait}`;
@@ -77,3 +79,62 @@
 
     return { name, picture, city, country, tagline, price, getUserCardDOM, getUserDescriptionDOM }
 }
+
+export function mediaTemplate(media) {
+
+
+    const { title, image, video, likes } = media;
+
+    const imagepicture = `assets/images/sample photos/${selectedPhotographers}/${image}`;
+    const videopicture = `assets/images/sample photos/${selectedPhotographers} /${video}`;
+
+    const mediaSection = document.querySelector(".photographe-media");
+
+    const mediaArticle = document.createElement('article');
+    mediaArticle.className = 'media';
+
+    const mediaDescription = document.createElement('div');
+    mediaDescription.className = 'mediaDescription';
+
+    const mediaTitle = document.createElement('p');
+    mediaTitle.className = 'mediaTitle';
+    mediaTitle.textContent = title;
+
+    const mediaLikeScore = document.createElement('p');
+    mediaLikeScore.className = 'mediaLikeScore';
+    mediaLikeScore.textContent = likes
+
+    const heartIcon  = document.createElement('i');
+    heartIcon.className = 'heartIcon '+'fa-solid fa-heart';
+    
+
+    mediaDescription.appendChild(mediaTitle);
+    mediaDescription.appendChild(mediaLikeScore);
+    mediaDescription.appendChild(heartIcon);
+    mediaArticle.appendChild(mediaDescription);
+    mediaSection.appendChild(mediaArticle);
+
+    
+   function getVideoMedia() {
+
+        const videoInput = document.createElement('video');
+        videoInput.className = 'videoInput';
+        videoInput.setAttribute("src", videopicture);
+
+        mediaArticle.appendChild(videoInput);
+        return(getVideoMedia)
+    }
+
+    function getPictureMedia() {
+        
+        const pictureInput = document.createElement('img');
+        pictureInput.className = 'pictureInput';
+        pictureInput.setAttribute("src", imagepicture);
+
+        mediaArticle.appendChild(pictureInput);
+        return(getPictureMedia)
+    }
+
+    return { title, image, video, likes, getPictureMedia, getVideoMedia }
+}
+

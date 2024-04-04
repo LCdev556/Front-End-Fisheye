@@ -1,70 +1,23 @@
+import { mediaTemplate } from "./photographer.js";
+
 export function factoryMedia (media){
+    const mediaModel = mediaTemplate(media);
     switch (media.type) {
-        case 'image' in media:
-            mediaTemplate(media).getPictureMedia(media)
-        break;
-
-        case 'video' in media:
-            mediaTemplate(media).getVideoMedia(media)
-        break;
-
-    }
-}
-
-export function mediaTemplate() {
-
-    const { title, image, video, likes } = media;
-
-    const imagepicture = `assets/images/sample photos/${image}`;
-    const videopicture = `assets/images/sample photos/${video}`;
-
-    const mediaSection = document.querySelector(".photographe-media");
-
-    const mediaArticle = document.createElement('article');
-
-    const mediaDescription = document.createElement('div');
-    mediaDescription.className = 'mediaDescription';
-
-    const mediaTitle = document.createElement('p');
-    mediaTitle.className = 'mediaTitle';
-    mediaTitle.textContent = title;
-
-    const mediaLikeScore = document.createElement('p');
-    mediaLikeScore.className = 'mediaLikeScore';
-    mediaLikeScore.textContent = likes
-
-   /** const heartIcon  = document.createElement('p');
-    heartIcon.className = 'heartIcon';
-    heartIcon.textContent = <i class="fa-solid fa-heart"></i>;*/ 
-
-    mediaDescription.appendChild(mediaTitle);
-    mediaDescription.appendChild(mediaLikeScore);
-    //mediaDescription.appendChild(heartIcon);
-    mediaArticle.appendChild(mediaDescription);
-    mediaSection.appendChild(mediaArticle);
-
-    
-    function getVideoMedia() {
-
-        const videoInput = document.createElement('video');
-        videoInput.className = 'videoInput';
-        videoInput.setAttribute("src", videopicture);
-
-        mediaArticle.appendChild(videoInput);
-    }
-
-    function getPictureMedia() {
         
-        const pictureInput = document.createElement('img');
-        pictureInput.className = 'PictureInput';
-        pictureInput.setAttribute("src", imagepicture);
+        case media.image :
+            
+            const mediaPhotoModel = mediaModel.getPictureMedia();
+        break;
 
-        mediaArticle.appendChild(pictureInput);
+        case media.video :
+           
+            const mediaVideoModel = mediaModel.getVideoMedia();
+        break;
+
     }
-    
-
-    return { title, image, video, likes, getPictureMedia, getVideoMedia }
 }
+
+
 
 
     

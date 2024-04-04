@@ -1,0 +1,9 @@
+import { photographers } from "./getPhotographersData.js";
+
+export const selectedPhotographers = photographers/** .photographers*/.find(function(photographer) {
+        return photographer.id == currentPhotographerId;
+    });
+    
+export const selectedMedia = photographers/** .media*/.filter(function(media) {
+        return media.photographerId == currentPhotographerId;
+    });
