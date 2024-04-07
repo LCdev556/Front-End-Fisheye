@@ -1,7 +1,5 @@
-
-
 export function photographerTemplate(photographer) {
-    const { name, portrait, city, tagline, price, country, id } = photographer;
+    const {name, portrait, city, tagline, price, country, id } = photographer;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -80,13 +78,17 @@ export function photographerTemplate(photographer) {
     return { name, picture, city, country, tagline, price, getUserCardDOM, getUserDescriptionDOM }
 }
 
-export function mediaTemplate(media) {
-
-
+export function mediaTemplate(media, selectedPhotographers) {
+    const {name} = selectedPhotographers;
     const { title, image, video, likes } = media;
+    const photographerName = name.split(' ');
+    const photographerFirstName = photographerName[0];
+    
 
-    const imagepicture = `assets/images/sample photos/${selectedPhotographers}/${image}`;
-    const videopicture = `assets/images/sample photos/${selectedPhotographers} /${video}`;
+    console.log(media);
+
+    const imagepicture = `assets/images/sample photos/${photographerFirstName}/${image}`;
+    const videopicture = `assets/images/sample photos/${photographerFirstName}/${video}`;
 
     const mediaSection = document.querySelector(".photographe-media");
 
@@ -105,7 +107,7 @@ export function mediaTemplate(media) {
     mediaLikeScore.textContent = likes
 
     const heartIcon  = document.createElement('i');
-    heartIcon.className = 'heartIcon '+'fa-solid fa-heart';
+    heartIcon.className = /**'heartIcon '+*/'fa-solid fa-heart';
     
 
     mediaDescription.appendChild(mediaTitle);
@@ -120,19 +122,17 @@ export function mediaTemplate(media) {
         const videoInput = document.createElement('video');
         videoInput.className = 'videoInput';
         videoInput.setAttribute("src", videopicture);
+        videoInput.setAttribute("onclick",'openLightBox')
 
         mediaArticle.appendChild(videoInput);
-        return(getVideoMedia)
     }
 
     function getPictureMedia() {
-        
         const pictureInput = document.createElement('img');
         pictureInput.className = 'pictureInput';
         pictureInput.setAttribute("src", imagepicture);
 
         mediaArticle.appendChild(pictureInput);
-        return(getPictureMedia)
     }
 
     return { title, image, video, likes, getPictureMedia, getVideoMedia }

@@ -2,6 +2,17 @@
     display: none;
 }
 
+.modal-bground{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -30,7 +41,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    margin:5% auto;
 }
 
 .modal header {
@@ -41,12 +52,15 @@
 
 .modal header img {
     cursor: pointer;
+    position: absolute;
+    right: 25%;
+    top:13%;
 }
 
 .modal header .formPhotographerName {
     font-size: 64px;
     font-weight: normal;
-    width: 65%;
+    width: 90%;
     text-wrap: wrap;
 }
 
@@ -117,6 +131,9 @@ form textarea {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-around;
+    width: 82%;
+    margin-left: auto;
+    margin-right:auto;
 
 }
 
@@ -155,28 +172,60 @@ form textarea {
 }
 
 .photographe-media{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-between;
+    display: grid;
+    width: 82%;
+    justify-content: center;
+    grid-template-columns: 26% 26% 26%;
+    grid-template-rows: 300px 300px 300px 300px ;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2% 11%;
 }
 
 .media{
     display:flex ;
     flex-direction: column-reverse;
-    height: auto;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: solid green;
+}
+
+.mediaDescription{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10%;
     justify-content: space-between;
 }
 
 .videoInput{
     border: red solid;
-    height: 200px;
-    width: 200px;
+    height: 90%;
+    width:100%;
+    object-fit: cover;
 }
 
 .pictureInput{
     border: red solid;
-    height: 200px;
-    width: 200px;
+    height: 90%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.fa-solid{
+    align-self: center;
+    margin-right: 0x;
+}
+
+.mediaLikeScore{
+    margin-right:-5% ;
+}
+
+.mediaTitle{
+    width: 75%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

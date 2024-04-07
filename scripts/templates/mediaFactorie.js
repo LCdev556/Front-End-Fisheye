@@ -1,19 +1,17 @@
 import { mediaTemplate } from "./photographer.js";
 
-export function factoryMedia (media){
-    const mediaModel = mediaTemplate(media);
+export function factoryMedia (media, selectedPhotographers) {
+    const mediaModel = mediaTemplate(media, selectedPhotographers);
+
     switch (media.type) {
         
-        case media.image :
-            
-            const mediaPhotoModel = mediaModel.getPictureMedia();
-        break;
-
         case media.video :
-           
-            const mediaVideoModel = mediaModel.getVideoMedia();
+            mediaModel.getPictureMedia();
         break;
 
+        case media.image :
+            mediaModel.getVideoMedia();
+        break;
     }
 }
 
