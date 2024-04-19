@@ -1,6 +1,7 @@
 import { photographerTemplate } from "../templates/photographer.js";
 import { factoryMedia } from "../templates/mediaFactorie.js";
 import { getPhotographerIdFromCurrentUrlParams } from "./urlParams.js";
+import { getPhotographerScore } from "../templates/photographer.js";
 //import { selectedPhotographers } from "./selectedPhotographersData.js";
 
 
@@ -25,9 +26,12 @@ export async function displayDataPhotographer(photographers) {
     const photographerModel = photographerTemplate(selectedPhotographers);
     const userPresentationDOM = photographerModel.getUserDescriptionDOM();
     
+    
     selectedMedia.forEach((selectedMedia) => {
         factoryMedia(selectedMedia, selectedPhotographers)
     });
+
+    getPhotographerScore(selectedMedia, selectedPhotographers)
  
 }
 

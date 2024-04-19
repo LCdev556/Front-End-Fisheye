@@ -1,3 +1,5 @@
+
+
 export function photographerTemplate(photographer) {
     const {name, portrait, city, tagline, price, country, id } = photographer;
 
@@ -83,9 +85,9 @@ export function mediaTemplate(media, selectedPhotographers) {
     const { title, image, video, likes } = media;
     const photographerName = name.split(' ');
     const photographerFirstName = photographerName[0];
-    
 
-    console.log(media);
+    
+    
 
     const imagepicture = `assets/images/sample photos/${photographerFirstName}/${image}`;
     const videopicture = `assets/images/sample photos/${photographerFirstName}/${video}`;
@@ -120,21 +122,61 @@ export function mediaTemplate(media, selectedPhotographers) {
    function getVideoMedia() {
 
         const videoInput = document.createElement('video');
-        videoInput.className = 'videoInput';
+        videoInput.className = 'mediaInput videoInput';
         videoInput.setAttribute("src", videopicture);
-        videoInput.setAttribute("onclick",'openLightBox')
-
+        videoInput.onclick = function() {
+            displayLightBox(this);};
+        //videoInput.setAttribute("onclick",`displayLightBox(this)`)
+//'${videopicture}'
         mediaArticle.appendChild(videoInput);
     }
 
     function getPictureMedia() {
         const pictureInput = document.createElement('img');
-        pictureInput.className = 'pictureInput';
+        pictureInput.className = 'mediaInput pictureInput';
         pictureInput.setAttribute("src", imagepicture);
-
+        pictureInput.onclick = function() {
+            displayLightBox(this);}
+       // pictureInput.setAttribute('onclick',`displayLightBox(this)`);
+//'${imagepicture}'
         mediaArticle.appendChild(pictureInput);
     }
 
     return { title, image, video, likes, getPictureMedia, getVideoMedia }
 }
 
+export function getPhotographerScore(selectedMedia, selectedPhotographers){
+    
+    const {price} = selectedPhotographers
+
+    var sum = 0;
+    
+    for(var item in selectedMedia){
+        sum += (selectedMedia[item].likes)
+    }
+    console.log(sum)
+
+
+    const likesScoreAndPriceContainer = document.querySelector(".likesScoreAndPrice")
+
+    const likeScoreContainer = document.createElement('div')
+    likeScoreContainer.className = 'likesScoreAndPrice__likeContainer'
+
+    const likeScore = document.createElement('p');
+    likeScore.className = 'likesScoreAndPrice__likesScore';
+    likeScore.textContent = sum;
+
+    const heartIcon  = document.createElement('i');
+    heartIcon.className = 'likesScoreAndPrice__heartIcon fa-solid fa-heart';
+
+    const photographerPrice = document.createElement('p');
+    photographerPrice.className = 'likesScoreAndPrice__price';
+    photographerPrice.textContent = price + '€/jour';
+    
+    likeScoreContainer.appendChild(likeScore)
+    likeScoreContainer.appendChild(heartIcon)
+    likesScoreAndPriceContainer.appendChild(likeScoreContainer)
+    likesScoreAndPriceContainer.appendChild(photographerPrice)
+
+    return {price}
+}

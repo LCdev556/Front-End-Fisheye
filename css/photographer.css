@@ -1,3 +1,27 @@
+#lightBox_modal{
+    display:none;
+}
+
+.lightBox-bground{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
+}
+
+.closeIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 25%;
+    top:13%;
+    color: #901C1C;
+}
+
+
 #contact_modal {
     display: none;
 }
@@ -35,26 +59,39 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin:5% auto;
+    scale: 70%;
+    position: fixed;
+    right: 47vh;
+    top:-18%;
+}
+
+.navigationArrow {
+    color: #901C1C;
+
+}
+
+.lightBoxMediaContainer{
+    height: 50%;
+    width: 50%;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
-    height: 200px;
+    height: 145px;
 }
 
 .modal header img {
     cursor: pointer;
     position: absolute;
-    right: 25%;
-    top:13%;
+    right: 4%;
+    top:5%;
 }
 
 .modal header .formPhotographerName {
@@ -62,6 +99,7 @@
     font-weight: normal;
     width: 90%;
     text-wrap: wrap;
+    margin-top: 45px;
 }
 
 
@@ -82,6 +120,7 @@ form {
 form label {
     color: #312E2E;
     font-size: 36px;
+    margin-bottom: -20px;
 }
 
 form div {
@@ -90,6 +129,7 @@ form div {
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
+    margin-bottom: 0px;
 }
 
 form input {
@@ -101,7 +141,7 @@ form input {
 
 form textarea {
     width: 100%;
-    height: 240px;
+    height: 150px;
     border: none;
     border-radius: 5px;
 }
@@ -198,20 +238,23 @@ form textarea {
     width: 100%;
     height: 10%;
     justify-content: space-between;
+    color: #901c1c;
 }
 
 .videoInput{
-    border: red solid;
     height: 90%;
     width:100%;
     object-fit: cover;
 }
 
 .pictureInput{
-    border: red solid;
     height: 90%;
     width: 100%;
     object-fit: cover;
+}
+
+.mediaInput{
+    border-radius: 1%;
 }
 
 .fa-solid{
@@ -228,4 +271,25 @@ form textarea {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.likesScoreAndPrice{
+    display: flex;
+    background-color: #D3573C;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 15%;
+    justify-content: space-around;
+}
+
+.likesScoreAndPrice__likeContainer{
+    display: flex;
+}
+
+.likesScoreAndPrice .fa-solid{
+    margin-left: 5%;
 }
