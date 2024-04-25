@@ -82,7 +82,7 @@ export function photographerTemplate(photographer) {
 
 export function mediaTemplate(media, selectedPhotographers) {
     const {name} = selectedPhotographers;
-    const { title, image, video, likes } = media;
+    const { title, image, video, likes, id } = media;
     const photographerName = name.split(' ');
     const photographerFirstName = photographerName[0];
 
@@ -111,6 +111,14 @@ export function mediaTemplate(media, selectedPhotographers) {
     const heartIcon  = document.createElement('i');
     heartIcon.className = /**'heartIcon '+*/'fa-solid fa-heart';
     
+    let liked = false;
+    heartIcon.onclick = function() {
+        likeHandler(media, mediaLikeScore, liked);
+    };
+    
+
+    
+    
 
     mediaDescription.appendChild(mediaTitle);
     mediaDescription.appendChild(mediaLikeScore);
@@ -124,10 +132,10 @@ export function mediaTemplate(media, selectedPhotographers) {
         const videoInput = document.createElement('video');
         videoInput.className = 'mediaInput videoInput';
         videoInput.setAttribute("src", videopicture);
-        videoInput.onclick = function() {
-            displayLightBox(this);};
-        //videoInput.setAttribute("onclick",`displayLightBox(this)`)
-//'${videopicture}'
+        /**videoInput.onclick = function() {
+            displayLightBox(this);};*/
+        videoInput.onclick = function() {indexOfMedia()};
+        videoInput.dataset.mediaId = id
         mediaArticle.appendChild(videoInput);
     }
 
@@ -135,10 +143,11 @@ export function mediaTemplate(media, selectedPhotographers) {
         const pictureInput = document.createElement('img');
         pictureInput.className = 'mediaInput pictureInput';
         pictureInput.setAttribute("src", imagepicture);
-        pictureInput.onclick = function() {
-            displayLightBox(this);}
-       // pictureInput.setAttribute('onclick',`displayLightBox(this)`);
-//'${imagepicture}'
+        /**pictureInput.onclick = function() {
+            displayLightBox(this);}*/
+            console.log('Click pictureInput');
+        pictureInput.onclick = function() {indexOfMedia()};
+        pictureInput.dataset.mediaId = id
         mediaArticle.appendChild(pictureInput);
     }
 

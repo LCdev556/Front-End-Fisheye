@@ -293,3 +293,12 @@ form textarea {
 .likesScoreAndPrice .fa-solid{
     margin-left: 5%;
 }
+
+
+.lightBoxMediaContainer{
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 40%;
+    height: 40%;
+}
