@@ -78,16 +78,15 @@ function closeLightBox(){
         const clikedMediaId = clickedMedia.getAttribute('data-media-id');
         console.log(clikedMediaId)
 
+        const checkId = (element) => element === clikedMediaId;
+
         dataIds.findIndex(checkId);
 
-        function checkId(id) {
-        return id = clikedMediaId;
-        }
-        console.log(checkId)
         //const index = dataIds.indexOf(event.currentTarget);
         //console.log(index);
         displayMedia(dataIds.findIndex(checkId)); // Appel de la fonction displayMedia avec l'index du média cliqué
         openLightBox(); // Ouvrir la lightbox lorsque le média est cliqué
+        console.log(dataIds.findIndex(checkId))
     }
     
     let currentIndex = 0;
