@@ -1,34 +1,3 @@
-/**function openLightBox() {
-    const lightBox = document.getElementById("lightBox_modal");
-	lightBox.style.display = "block";
-}
-
-function closeLightBox(){
-    const lightBox = document.getElementById("lightBox_modal");
-    document.querySelector('.lightBoxMediaContainer').innerHTML = ""
-    lightBox.style.display = "none";
-}
-*/
-
-
-
-/**function displayLightBox(element) {
-    openLightBox();
-
-    if (element.tagName === 'IMG') {
-        const lightboxMediaImg = document.createElement('img');
-        lightboxMediaImg.setAttribute("src", element.src);
-        // Ajoutez l'image à votre lightbox
-        document.querySelector('.lightBoxMediaContainer').appendChild(lightboxMediaImg);
-    } else if (element.tagName === 'VIDEO') {
-        const lightboxMediaVideo = document.createElement('video');
-        lightboxMediaVideo.setAttribute("src", element.src);
-        // Ajoutez la vidéo à votre lightbox
-        document.querySelector('.lightBoxMediaContainer').appendChild(lightboxMediaVideo);
-    }
-}
-*/
-
 
 
     // Votre code JavaScript ici
@@ -47,18 +16,8 @@ function closeLightBox(){
     
     
     
-        // Vous pouvez maintenant utiliser displayedMedia pour accéder à tous les médias sélectionnés
-    
-        
-    // Parcourez chaque élément displayedMedia et ajoutez un gestionnaire d'événements pour le clic
-/**     mediaInputsList.forEach(mediaInput => {
-        mediaInput.addEventListener('click', event => {
-            const index = mediaInputsList.indexOf(event.currentTarget);
-            displayMedia(index); // Appel de la fonction displayMedia avec l'index du média cliqué
-            openLightBox(); // Ouvrir la lightbox lorsque le média est cliqué
-        });
-    });
-*/  let mediaInputs = []
+    let mediaInputs = []
+
     function indexOfMedia () {
         mediaInputs = document.querySelectorAll(".mediaInput");
         const dataIds = []
@@ -101,16 +60,25 @@ function closeLightBox(){
         currentIndex = index;
         const media = mediaInputs[currentIndex];
         const lightBoxMediaContainer = document.querySelector('.lightBoxMediaContainer');
+        const lightBoxMediaTitle = document.querySelector('.lightBoxMediaTitle');
         lightBoxMediaContainer.innerHTML = ""; // Vide le contenu précédent de la lightbox
+        lightBoxMediaTitle.innerHTML = "";
+
     
         if (media.tagName === 'IMG') {
             const lightboxMediaImg = document.createElement('img');
+            lightboxMediaImg.className = 'lightboxMedia lightboxMediaImg';
             lightboxMediaImg.setAttribute("src", media.src);
             lightBoxMediaContainer.appendChild(lightboxMediaImg);
+            lightBoxMediaTitle.textContent = media.dataset.mediaTitle;
         } else if (media.tagName === 'VIDEO') {
             const lightboxMediaVideo = document.createElement('video');
             lightboxMediaVideo.setAttribute("src", media.src);
+            lightboxMediaVideo.className = 'lightboxMedia lightboxMediaVideo'
             lightBoxMediaContainer.appendChild(lightboxMediaVideo);
+            lightBoxMediaTitle.textContent = media.dataset.mediaTitle;
+            console.log(media.dataset.mediaTitle)
+
         }
     }
     
@@ -118,6 +86,8 @@ function closeLightBox(){
     function showPreviousMedia() {
         if (currentIndex > 0) {
             displayMedia(currentIndex - 1);
+        }else{
+            displayMedia(currentIndex = mediaInputs.length - 1)
         }
     }
     
@@ -125,6 +95,8 @@ function closeLightBox(){
     function showNextMedia() {
         if (currentIndex < mediaInputs.length - 1) {
             displayMedia(currentIndex + 1);
+        }else {
+            displayMedia(currentIndex = 0)
         }
     }
     
@@ -135,8 +107,26 @@ function closeLightBox(){
     // Ajoutez des gestionnaires d'événements aux boutons
     previousButton.addEventListener('click', showPreviousMedia);
     nextButton.addEventListener('click', showNextMedia);
+    window.addEventListener(
+        "keydown",
+        (event) => {
+          if (event.defaultPrevented) {
+            return; // Do nothing if the event was already processed
+          }
+      
+          switch (event.key) {
+            
+            case "ArrowLeft":
+              showPreviousMedia()
+              break;
+            case "ArrowRight":
+              showNextMedia()
+              break;
+            case "Escape":
+                closeLightBox()
+            break;
+          }})
     
-
-
+///////////////////////////////////////////////////////////////////////////////////////
 
     

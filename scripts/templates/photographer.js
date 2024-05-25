@@ -27,6 +27,8 @@ export function photographerTemplate(photographer) {
 
         const link = document.createElement( 'a');
         link.setAttribute("href", `http://127.0.0.1:5500/photographer.html?id=${id}`);
+        link.setAttribute("aria-label", name)
+        link.set
         link.className = 'photographersUrlLink';
 
         const imgContainer = document.createElement( 'div' )
@@ -36,7 +38,7 @@ export function photographerTemplate(photographer) {
         link.appendChild(imgContainer);
         imgContainer.appendChild(img);
         article.appendChild(link);
-        article.appendChild(h2);
+        link.appendChild(h2);
         article.appendChild(localisation);
         article.appendChild(description);
         article.appendChild(prices);
@@ -82,7 +84,7 @@ export function photographerTemplate(photographer) {
 
 export function mediaTemplate(media, selectedPhotographers) {
     const {name} = selectedPhotographers;
-    const { title, image, video, likes, id } = media;
+    const { title, image, video, likes, id, date } = media;
     const photographerName = name.split(' ');
     const photographerFirstName = photographerName[0];
 
@@ -111,6 +113,8 @@ export function mediaTemplate(media, selectedPhotographers) {
     const heartIcon  = document.createElement('i');
     heartIcon.className = /**'heartIcon '+*/'fa-solid fa-heart';
     
+    mediaArticle.tabIndex = "0";
+
     let liked = false;
     heartIcon.onclick = function() {
         likeHandler(media, mediaLikeScore, liked);
@@ -135,7 +139,11 @@ export function mediaTemplate(media, selectedPhotographers) {
         /**videoInput.onclick = function() {
             displayLightBox(this);};*/
         videoInput.onclick = function() {indexOfMedia()};
-        videoInput.dataset.mediaId = id
+        videoInput.dataset.mediaId = id;
+        videoInput.dataset.mediaTitle = title;
+        videoInput.dataset.mediaDate = date;
+        videoInput.dataset.mediaLike = likes;
+        video
         mediaArticle.appendChild(videoInput);
     }
 
@@ -148,6 +156,9 @@ export function mediaTemplate(media, selectedPhotographers) {
             console.log('Click pictureInput');
         pictureInput.onclick = function() {indexOfMedia()};
         pictureInput.dataset.mediaId = id
+        pictureInput.dataset.mediaTitle = title;
+        pictureInput.dataset.mediaDate = date;
+        pictureInput.dataset.mediaLike = likes;
         mediaArticle.appendChild(pictureInput);
     }
 

@@ -79,3 +79,17 @@ lastnameTag.addEventListener('focusout', (event) => {
 messageTag.addEventListener("focusout", (event) => {
     isValidMessage(messageTag.value.length);
 });
+
+window.addEventListener(
+  "keydown",
+  (event) => {
+    if (event.defaultPrevented) {
+      return; // Do nothing if the event was already processed
+    }
+
+    switch (event.key) {
+      
+      case "Escape":
+        closeModal();
+      break;
+    }})

@@ -1,3 +1,7 @@
+*{
+    tabindex :"0"
+}
+
 #lightBox_modal{
     display:none;
 }
@@ -10,15 +14,17 @@
     height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba(26, 39, 156, 0.4);
+    background-color: white;
+    align-content: center;
 }
 
 .closeIcon {
     cursor: pointer;
     position: absolute;
-    right: 25%;
-    top:13%;
+    right: 20%;
+    top:7%;
     color: #901C1C;
+    scale: 2.5;
 }
 
 
@@ -71,10 +77,6 @@
     top:-18%;
 }
 
-.navigationArrow {
-    color: #901C1C;
-
-}
 
 .lightBoxMediaContainer{
     height: 50%;
@@ -190,6 +192,7 @@ form textarea {
     width: 200px;
     zoom:1.1;
     object-fit: cover;
+    
 }
 
 .photograph-header__description .name {
@@ -297,8 +300,139 @@ form textarea {
 
 .lightBoxMediaContainer{
     justify-content: center;
-    margin-right: auto;
-    margin-left: auto;
-    width: 40%;
-    height: 40%;
+    
+    width: 93%;
+    height: 100%;
+}
+
+.lightboxMedia{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+}
+
+.lightBox{
+    display: flex;
+    height: 90%;
+    width: 60%;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.lightBoxMediaTitle {
+    position: absolute;
+    bottom: -8px;
+    margin-left: 2%;
+    color : #901c1c
+}
+
+.navigationArrow {
+    color: #901C1C;
+    scale: 3;
+}
+
+.sortChoiceList{
+    /*display: none;*/
+    display: block;
+    margin:0;
+    z-index: 1;
+    position: absolute;
+    left: 18%;
+    top: 400px;
+    list-style: none;
+    padding: 0.3%;
+    color: white;
+    background:#901C1C;
+    width: 9%;
+    font-size: 130%;
+    border-radius: 5px;
+    
+
+}
+#listElementTwo{
+    display: none;
+}
+
+#listElementThree{
+    display: none;
+}
+
+
+
+.sortChoiceList:hover{
+    display: block;
+}
+
+.selectedChoice{
+    margin: 0;
+    display: flex;
+    width: 9%;
+    color: white;
+    background-color: #901C1C;
+    padding: 0.3%;
+    border-radius: 5px 5px 0px 0px;
+    font-size: 100%;
+}
+
+.selectedChoice:hover ~.sortChoiceList{
+    display: block;
+}
+
+.listTitle{
+    display: inline;
+}
+
+.listChoice{
+    color: white;
+    background-color:#901C1C;
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    font-size: 60%;
+    height:auto;
+    vertical-align: middle;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+.listElement{
+    height: 35px;
+    align-items: center;
+}
+
+#listElementTwo{
+    border-top: solid white 1px;
+    border-bottom: solid white 1px;
+}
+
+.sortChoiceListContainer{
+    display: flex;
+    flex-direction: row;
+    margin-left: 9%;
+}
+#scales{
+    z-index: 3;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 25%;
+    top: 410px;
+    opacity: 0;
+}
+
+#scales:checked ~#chevronLogo{
+    rotate:180deg;
+
+}
+
+.fa-chevron-down {
+    z-index: 2;
+    
+    position: absolute;
+    left: 25.2%;
+    top: 410px;
+    color: white;
 }

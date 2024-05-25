@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img tabindex="0" src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -18,16 +18,30 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         <div class="photograph-header__description"></div>
       </div>
+
+      <div class="sortChoiceListContainer">
+        <p class="listTitle">Trier par</p>
+        
+        <input type="checkbox" id="scales" name="scales"  />
+        <i id="chevronLogo" class="fa-solid fa-chevron-down"></i>
+        <ul class="sortChoiceList">
+          <li class="listElement" id="listElementOne"><button onclick="sortByTitle();displaySortBy(sortByTitle); listTitle('Titre')" class="listChoice" id="listButtonOne">Titre</button></li>
+          <li class="listElement" id="listElementTwo"><button onclick="sortByPopularity();displaySortBy(sortByPopularity); listTitle('Popularité')" class="listChoice" id="listButtonTwo">Popularité</button></li>
+          <li class="listElement" id="listElementThree"><button onclick="sortByDate();displaySortBy(sortByDate); listTitle('Date')" class="listChoice" id="listButtonThree">Date</button></li>
+        </ul>
+      </div>
       <section class="photographe-media">
       </section>
       <div class="likesScoreAndPrice"></div>
     </main>
     <div class="lightBox-bground" id="lightBox_modal">
-      <div class="lightBox"></div>
-      <img src="assets/icons/close.svg" class="closeIcon" onclick="closeLightBox()" />
+      <div class="lightBox">
+      <i class="fa-solid fa-xmark closeIcon" onclick="closeLightBox()"></i>
       <i id="previousButton" class="previousButton navigationArrow fa-solid fa-chevron-left"></i>
       <div class="lightBoxMediaContainer"></div>
+      <p class="lightBoxMediaTitle" ></p>
       <i id="nextButton" class="nextButton navigationArrow fa-solid fa-chevron-right"></i>
+    </div>
     </div>
     <div class="modal-bground" id="contact_modal">
 			<div class="modal">
@@ -90,6 +104,7 @@
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/lightBox.js"></script>
     <script src="/scripts/utils/likeHandler.js"></script>
+    <script src="/scripts/utils/mediaSorting.js"></script>
    
   </body>
 </html>
