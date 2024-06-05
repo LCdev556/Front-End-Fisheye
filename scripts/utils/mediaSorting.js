@@ -12,11 +12,7 @@ const listButtonThree = document.querySelector("#listButtonThree")
 
 const checkElement =  document.querySelector("input[name=scales]")
 
-function listTitle(title){
-    
-    titleOfList.textContent = title;
-}
-
+//Ecoute d'evenement pour gerer l'affichage de la liste de filtres
 checkElement.addEventListener('change', function() {
     if (this.checked) {
         listElementTwo.style.display = "block"; 
@@ -27,106 +23,79 @@ checkElement.addEventListener('change', function() {
     }
   });
  
-//choiceOne.addEventListener('mouseover',event=> {choiceTwo.style.display = "block"; choiceThree.style.display = "block"})
-//choiceOne.addEventListener('mouseout',event=> {choiceTwo.style.display = "none"; choiceThree.style.display = "none"})
 
-
-
+/**
+ * trie des medias selon leurs titres
+ * @returns 
+ */
 function sortByTitle() {
  
+    //modification de la place des filtre dans la liste
     listElementOne.append(listButtonOne) 
     listElementTwo.append(listButtonTwo)
     listElementThree.append(listButtonThree)
    
-    console.log("1")
-    mediaInputs = document.querySelectorAll(".mediaInput");
-        // Convertir la liste d'entrées en un tableau pour pouvoir utiliser la méthode sort()
+    
+    mediaInputs = document.querySelectorAll(".media");
+    // Convertion de la liste d'entrées en un tableau pour pouvoir utiliser la méthode sort()
     const mediaArray = Array.from(mediaInputs);
 
     return mediaArray.sort((a, b) => {
     let title = document.querySelector(".mediaTitle")
-    //console.log(mediaInput.dataset.mediaTitle)
     return a.dataset.mediaTitle.localeCompare(b.dataset.mediaTitle);
     
     
 })}
 
 
-
+/**
+ * Trie des media selon leurs popularité (nombre de like)
+ * @returns 
+ */
 function sortByPopularity() {
  
+    //modification de la place des filtre dans la liste
     listElementOne.append(listButtonTwo)
     listElementTwo.append(listButtonOne)
     listElementThree.append(listButtonThree)
 
-    console.log("2")
-    mediaInputs = document.querySelectorAll(".mediaInput");
-        // Convertir la liste d'entrées en un tableau pour pouvoir utiliser la méthode sort()
+    
+    mediaInputs = document.querySelectorAll(".media");
+    // Convertion de la liste d'entrées en un tableau pour pouvoir utiliser la méthode sort()
     const mediaArray = Array.from(mediaInputs);
 
     return mediaArray.sort((a, b) => {
     return b.dataset.mediaLike - a.dataset.mediaLike;
 })}
 
+/**
+ * Trie des media selon leur date de création
+ * @returns 
+ */
 function sortByDate() {
 
-
+    //modification de la place des filtre dans la liste
     listElementOne.append(listButtonThree) 
     listElementTwo.append (listButtonTwo)
     listElementThree.append (listButtonOne) 
 
-    console.log("3")
-    mediaInputs = document.querySelectorAll(".mediaInput");
-        // Convertir la liste d'entrées en un tableau pour pouvoir utiliser la méthode sort()
+   
+    mediaInputs = document.querySelectorAll(".media");
+    // Convertion de la liste d'entrées en un tableau pour pouvoir utiliser la méthode sort()
     const mediaArray = Array.from(mediaInputs);
 
     return mediaArray.sort((a, b) => {
         return new Date(a.dataset.mediaDate) - new Date(b.dataset.mediaDate);
 })}
 
-
+/**
+ * Affichage des media selon le filtre de trie selectioné
+ * @param {*} sortChoice 
+ */
 function displaySortBy(sortChoice){
 const sortedMedia = sortChoice(mediaInputs);
 const mediaContainer = document.querySelector(".photographe-media")
 mediaContainer.innerHTML = ""
 sortedMedia.forEach((element) => mediaContainer.append(...sortedMedia));
-
-/** 
-switch (sortChoice){
-    case 'sortByTitle' :
-        choiceOne.style.display = "none"
-        choiceTwo.style.display = "block"
-        choiceThree.style.display = "block"
-    break;
-
-    case 'sortByPopularity' : 
-        choiceTwo.style.display = "none"
-        choiceOne.style.display = "block"
-        choiceThree.style.display = "block"
-    break;
-
-    case 'sortByDate' : 
-        choiceTwo.style.display = "block"
-        choiceOne.style.display = "block"
-        choiceThree.style.display = "none"
-    break;
-}*/
-/** 
-if ( sortChoice = sortByTitle ){
-    choiceOne.style.display = "none"
-    choiceTwo.style.display = "block"
-    choiceThree.style.display = "block"
-    
-}else
-if(sortChoice = sortByPopularity){
-    choiceTwo.style.display = "none"
-    choiceOne.style.display = "block"
-    choiceThree.style.display = "block"
-}else
-if(sortChoice = sortByDate){
-    choiceTwo.style.display = "block"
-    choiceOne.style.display = "block"
-    choiceThree.style.display = "none"
-}*/
 }
 

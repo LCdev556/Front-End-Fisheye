@@ -1,11 +1,12 @@
-    import {getPhotographers, photographers } from "../utils/getPhotographersData.js";
-    import { displayDataIndex } from "../utils/displayData.js";
+import { photographers } from "../utils/getPhotographersData.js";
+import { displayDataIndex } from "../utils/displayData.js";
 
-
-    //export const photographers  = await getPhotographers();
-    async function init() {
-        // Récupère les datas des photographes 
-        displayDataIndex(photographers);
-    }
-    init()
+/**
+ * Affichage sur la page index des données recupérées depuis le fichier json 
+ */
+async function init() {
+     
+    displayDataIndex(photographers);
+}
+init()
     

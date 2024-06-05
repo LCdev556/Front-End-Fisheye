@@ -10,93 +10,109 @@
   </head>
   <body>
     <header>
-      <img tabindex="0" src="assets/images/logo.png" class="logo" />
+      <a tabindex="0" href="index.html"  aria-label="lien vers la page principale" alt="Fisheye Home page"><img tabindex="-1" src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
+       <div class="photograph-header__description"></div>
+        <button tabindex="0"  aria-label="Contactez-moi, bouton d'ouverture du formulaire de contact" class="contact_button" onclick="displayModal()">Contactez-moi</button>
+         
         <div class="photograph-header__img"></div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        <div class="photograph-header__description"></div>
       </div>
 
       <div class="sortChoiceListContainer">
-        <p class="listTitle">Trier par</p>
+        <p tabindex="0" aria-label="" class="listTitle">Trier par</p>
         
-        <input type="checkbox" id="scales" name="scales"  />
+        <input tabindex="0" aria-label="bouton d'ouverture de la liste de filtre" type="checkbox" id="scales" name="scales"  />
         <i id="chevronLogo" class="fa-solid fa-chevron-down"></i>
-        <ul class="sortChoiceList">
-          <li class="listElement" id="listElementOne"><button onclick="sortByTitle();displaySortBy(sortByTitle); listTitle('Titre')" class="listChoice" id="listButtonOne">Titre</button></li>
-          <li class="listElement" id="listElementTwo"><button onclick="sortByPopularity();displaySortBy(sortByPopularity); listTitle('Popularité')" class="listChoice" id="listButtonTwo">Popularité</button></li>
-          <li class="listElement" id="listElementThree"><button onclick="sortByDate();displaySortBy(sortByDate); listTitle('Date')" class="listChoice" id="listButtonThree">Date</button></li>
+        <ul tabindex="0" aria-label="Liste de filtre" class="sortChoiceList">
+          <li tabindex="-1" class="listElement" id="listElementOne"><button onclick="sortByTitle();displaySortBy(sortByTitle);" class="listChoice" id="listButtonOne" aria-label="Filtrer par titre">Titre</button></li>
+          <li tabindex="-1" class="listElement" id="listElementTwo"><button onclick="sortByPopularity();displaySortBy(sortByPopularity); " class="listChoice" id="listButtonTwo" aria-label="Filtrer par popularité">Popularité</button></li>
+          <li tabindex="-1" class="listElement" id="listElementThree"><button onclick="sortByDate();displaySortBy(sortByDate); " class="listChoice" id="listButtonThree" aria-label="Filtrer par date">Date</button></li>
         </ul>
       </div>
       <section class="photographe-media">
       </section>
-      <div class="likesScoreAndPrice"></div>
+      <div tabindex="0" class="likesScoreAndPrice"></div>
     </main>
     <div class="lightBox-bground" id="lightBox_modal">
       <div class="lightBox">
-      <i class="fa-solid fa-xmark closeIcon" onclick="closeLightBox()"></i>
-      <i id="previousButton" class="previousButton navigationArrow fa-solid fa-chevron-left"></i>
+      <i class="fa-solid fa-xmark closeIcon" aria-label="fermeture de la fenetre contextuelle" onclick="closeLightBox()"></i>
+      <i id="previousButton" aria-label="photo précedente" class="previousButton navigationArrow fa-solid fa-chevron-left"></i>
       <div class="lightBoxMediaContainer"></div>
       <p class="lightBoxMediaTitle" ></p>
-      <i id="nextButton" class="nextButton navigationArrow fa-solid fa-chevron-right"></i>
+      <i id="nextButton" aria-label="photo suivante" class="nextButton navigationArrow fa-solid fa-chevron-right"></i>
     </div>
     </div>
     <div class="modal-bground" id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2 class="formPhotographerName">Contactez-moi</h2><br>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 tabindex="0"class="formPhotographerContactMe">Contactez-moi</h2>
+          <p tabindex="0" class="formPhotographerName"></p>
+          <img tabindex="0" aria-label="Bouton de fermeture du formulaire de contact" src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
 					<div
-                class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du Prénom" data-error-visible="false">
-                <label for="first">Prénom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="first"
-                  name="first"
-                  minlength="2"
-                /><br>
-              </div>
+            class="formData" tabindex="0" data-error="Veuillez entrer 2 caractères ou plus pour le champ du Prénom" data-error-visible="false">
+            <label for="first">Prénom</label><br>
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              minlength="2"
+              tabindex="0"
+              aria-label="Champs d'entrer du prénom "
+              /><br>
+          </div>
 
-              <div
-                class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom" data-error-visible="false">
-                <label for="last">Nom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"
-                /><br>
-              </div>
+          <div
+            class="formData" tabindex="0" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom" data-error-visible="false">
+            <label for="last">Nom</label><br>
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              name="last"
+              tabindex="0"
+              aria-label="Champs d'entrer du nom de famille "
+              /><br>
+          </div>
 
-              <div
-                class="formData" data-error="Vous devez entrer une adresse mail valide" data-error-visible="false">
-                <label for="email">E-mail</label><br>
-                <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                /><br>
-              </div>
+          <div
+            class="formData" tabindex="0" data-error="Vous devez entrer une adresse mail valide" data-error-visible="false">
+            <label for="email">E-mail</label><br>
+            <input
+              class="text-control"
+              type="email"
+              id="email"
+              name="email"
+              tabindex="0"
+              aria-label="Champs d'entrer de l'adresse mail "
+              /><br>
+          </div>
 
-              <div
-                class="formData" data-error="Veuillez ecrire votre message" data-error-visible="false">
-                <label for="message">Votre message</label><br>
-                <textarea
-                  class="text-control"
-                  id="message"
-                  name="message"
-                  required
-                ></textarea>
-                <br>
-              </div>
+          <div
+            class="formData" tabindex="0" data-error="Veuillez ecrire votre message" data-error-visible="false">
+            <label for="message">Votre message</label><br>
+            <textarea
+              class="text-control"
+              id="message"
+              name="message"
+              required
+              tabindex="0"
+              aria-label="Champs d'entrer du message "
+              ></textarea>
+              <br>
+          </div>
 
-          <button class="contact_button">Envoyer</button>
+          <input
+            class="contact_button"
+            type="submit"
+            value="Envoyer"
+            tabindex="0"
+            aria-label="Bouton d'envoi du formulaire "
+          />
 				</form>
 			</div>
 		</div>

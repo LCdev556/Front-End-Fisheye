@@ -1,67 +1,63 @@
-
-
-    // Votre code JavaScript ici
-    // Vous pouvez placer ici le code qui nécessite que le DOM soit entièrement chargé
-    
+    /**
+     * Ouverture de la lightbox
+     */
     function openLightBox() {
         const lightBox = document.getElementById("lightBox_modal");
         lightBox.style.display = "block";
     }
     
+    /**
+     * Fermeture de la lightbox
+     */
     function closeLightBox(){
         const lightBox = document.getElementById("lightBox_modal");
         document.querySelector('.lightBoxMediaContainer').innerHTML = ""
         lightBox.style.display = "none";
     }
     
-    
-    
     let mediaInputs = []
 
+    /**
+     * Recuperation de l'id du media selectioner pour étre ouvert dans la lightbox
+     */
     function indexOfMedia () {
         mediaInputs = document.querySelectorAll(".mediaInput");
         const dataIds = []
         mediaInputs.forEach(mediaInput => {
             const dataId = mediaInput.dataset.mediaId;
-            // Vérifier si l'attribut data-id existe
-            //if (data-media-id) {
-                // Ajouter l'attribut data-id à la liste
+            
                 dataIds.push(dataId);
-            //}
+            
         });
-        console.log(dataIds)
-        console.log(mediaInputs);
-        console.log(event.currentTarget);
+        
         const clickedMedia = event.currentTarget
-        console.log(clickedMedia)
+        
         const clikedMediaId = clickedMedia.getAttribute('data-media-id');
-        console.log(clikedMediaId)
 
         const checkId = (element) => element === clikedMediaId;
 
         dataIds.findIndex(checkId);
 
-        //const index = dataIds.indexOf(event.currentTarget);
-        //console.log(index);
-        displayMedia(dataIds.findIndex(checkId)); // Appel de la fonction displayMedia avec l'index du média cliqué
-        openLightBox(); // Ouvrir la lightbox lorsque le média est cliqué
-        console.log(dataIds.findIndex(checkId))
+        displayMedia(dataIds.findIndex(checkId)); 
+
+        openLightBox(); 
+        
     }
     
     let currentIndex = 0;
     
-    // Fonction pour afficher le média dans la lightbox
+    /**
+     * construction du media dans la lightbox 
+     * @param {*} index 
+     */
     function displayMedia(index) {
-        // Assurez-vous que l'index reste dans les limites des médias affichés
-        //if (index < 0 || index >= mediaInputs.length) {
-        //    return;
-        //}
+        
     
         currentIndex = index;
         const media = mediaInputs[currentIndex];
         const lightBoxMediaContainer = document.querySelector('.lightBoxMediaContainer');
         const lightBoxMediaTitle = document.querySelector('.lightBoxMediaTitle');
-        lightBoxMediaContainer.innerHTML = ""; // Vide le contenu précédent de la lightbox
+        lightBoxMediaContainer.innerHTML = ""; 
         lightBoxMediaTitle.innerHTML = "";
 
     
@@ -70,19 +66,30 @@
             lightboxMediaImg.className = 'lightboxMedia lightboxMediaImg';
             lightboxMediaImg.setAttribute("src", media.src);
             lightBoxMediaContainer.appendChild(lightboxMediaImg);
+            lightboxMediaImg.ariaLabel = "image" + media.dataset.mediaTitle
+            lightboxMediaImg.tabIndex = 0
             lightBoxMediaTitle.textContent = media.dataset.mediaTitle;
+            lightBoxMediaTitle.tabIndex = 0
+            lightBoxMediaTitle.ariaLabel = media.dataset.mediaTitle
         } else if (media.tagName === 'VIDEO') {
             const lightboxMediaVideo = document.createElement('video');
+            lightboxMediaVideo.setAttribute("controls", "controls")
             lightboxMediaVideo.setAttribute("src", media.src);
             lightboxMediaVideo.className = 'lightboxMedia lightboxMediaVideo'
             lightBoxMediaContainer.appendChild(lightboxMediaVideo);
+            lightboxMediaVideo.ariaLabel = "Video" + media.dataset.mediaTitle
+            lightboxMediaVideo.tabIndex = 0
             lightBoxMediaTitle.textContent = media.dataset.mediaTitle;
-            console.log(media.dataset.mediaTitle)
+            lightBoxMediaTitle.tabIndex = 0
+            lightBoxMediaTitle.ariaLabel = media.dataset.mediaTitle
+            
 
         }
     }
     
-    // Fonction pour afficher le média précédent dans la lightbox
+    /**
+     * Affichage dasn la lightbox du media précédent 
+     */
     function showPreviousMedia() {
         if (currentIndex > 0) {
             displayMedia(currentIndex - 1);
@@ -91,7 +98,9 @@
         }
     }
     
-    // Fonction pour afficher le média suivant dans la lightbox
+    /**
+     * Affichage dasn la lightbox du media suivant
+     */
     function showNextMedia() {
         if (currentIndex < mediaInputs.length - 1) {
             displayMedia(currentIndex + 1);
@@ -102,7 +111,11 @@
     
     // Récupérez les boutons précédent et suivant
     const previousButton = document.getElementById('previousButton');
+    previousButton.tabIndex = 0
+    previousButton.ariaLabel = "Passer au media suivant"
     const nextButton = document.getElementById('nextButton');
+    nextButton.tabIndex = 0
+    nextButton.ariaLabel = "Revenir au media précédant "
     
     // Ajoutez des gestionnaires d'événements aux boutons
     previousButton.addEventListener('click', showPreviousMedia);
@@ -111,7 +124,7 @@
         "keydown",
         (event) => {
           if (event.defaultPrevented) {
-            return; // Do nothing if the event was already processed
+            return; 
           }
       
           switch (event.key) {

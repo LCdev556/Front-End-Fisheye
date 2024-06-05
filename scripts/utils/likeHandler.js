@@ -1,3 +1,8 @@
+/**
+ * Fonction pour gérer le clic sur l'icône de cœur
+ * @param {*} media 
+ * @param {*} likesElement 
+ */
 function likeHandler(media, likesElement) {
     let currentLikes = parseInt(likesElement.textContent);
     // Fonction pour gérer le clic sur l'icône de cœur
@@ -5,7 +10,7 @@ function likeHandler(media, likesElement) {
     if (!media.liked) {
         // On incrémente le nombre de likes
         currentLikes++;
-        //On modifie en consequance le nobre de like total
+        //On modifie en consequance le nombre de like total
         totalLikeScore.textContent= parseInt(totalLikeScore.textContent) + 1; 
         // On marque le média comme aimé
         media.liked = true;

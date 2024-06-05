@@ -3,24 +3,43 @@ const lastnameTag = document.getElementById('last');
 const emailTag = document.getElementById('email');
 const messageTag = document.getElementById('message');
 const photographerNameTitle = document.getElementById('photographe-name')
+const form = document.querySelector('form');
+const main  = document.querySelector('main')
 
 
 
-
- function displayModal() {
+/**
+ * Ouverture de la modal de contact
+ */
+function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
+  main.setAttribute("inert","")
+  
 }
 
+/**
+ * Fermeture de la modal de contact
+ */
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+    main.removeAttribute("inert","")
 }
 
-function formDataReader() {
-    console.log(firstnameTag.value + lastnameTag.value + emailTag.value );
-}
+/**
+ * Affichage dans la console des valeurs entrées dans le fomulaire
+ */
+const formeSendButton = document.getElementsByClassName('contact_button');
 
+
+
+
+/**
+ * Verification de la valeur du champs "prenom"
+ * @param {*} firstnameValue 
+ * @returns 
+ */
 function isValidFirstname(firstnameValue) {
     const firstNameContainer = firstnameTag.parentNode;
     if (firstnameValue >= 2) {
@@ -33,36 +52,51 @@ function isValidFirstname(firstnameValue) {
     
   };
 
-  function isValidLastname(lastnameValue) {
-    const lastNameContainer = lastnameTag.parentNode;
+/**
+ * Verification de la valeur du champs "Nom"
+ * @param {*} lastnameValue 
+ * @returns 
+ */
+function isValidLastname(lastnameValue) {
+  const lastNameContainer = lastnameTag.parentNode;
   
-    if (lastnameValue >= 2) {
-      lastNameContainer.setAttribute('data-error-visible', 'false');
-      return true;
-    }
-    lastNameContainer.setAttribute('data-error-visible', 'true');
+  if (lastnameValue >= 2) {
+    lastNameContainer.setAttribute('data-error-visible', 'false');
+    return true;
   }
-  
-  function isValidEmail(emailValue) {
-    const emailContainer = emailTag.parentNode;
-    if ((new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")).test(emailValue)) {
-      emailContainer.setAttribute('data-error-visible', 'false');
-      return true;
-    };
-    emailContainer.setAttribute('data-error-visible', 'true');
-  }
+  lastNameContainer.setAttribute('data-error-visible', 'true');
+}
 
-  function isValidMessage(messageValue) {
-    const messageContainer = messageTag.parentNode;
-    if (messageValue >= 2) {
-      messageContainer.setAttribute('data-error-visible', 'false');
-      
-      return true;
-      
-    }
-    messageContainer.setAttribute('data-error-visible', 'true');
-    
+/**
+ * Verification de la valeur du champs "email"
+ * @param {*} emailValue 
+ * @returns 
+ */
+function isValidEmail(emailValue) {
+  const emailContainer = emailTag.parentNode;
+  if ((new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")).test(emailValue)) {
+    emailContainer.setAttribute('data-error-visible', 'false');
+    return true;
   };
+  emailContainer.setAttribute('data-error-visible', 'true');
+}
+
+/**
+ * Verification de la valeur du champs "message"
+ * @param {*} messageValue 
+ * @returns 
+ */
+function isValidMessage(messageValue) {
+  const messageContainer = messageTag.parentNode;
+  if (messageValue >= 2) {
+    messageContainer.setAttribute('data-error-visible', 'false');
+      
+    return true;
+      
+  }
+  messageContainer.setAttribute('data-error-visible', 'true');
+    
+};
 
 firstnameTag.addEventListener('focusout', (event) => {
     isValidFirstname(firstnameTag.value.length);
@@ -84,7 +118,7 @@ window.addEventListener(
   "keydown",
   (event) => {
     if (event.defaultPrevented) {
-      return; // Do nothing if the event was already processed
+      return; 
     }
 
     switch (event.key) {
@@ -93,3 +127,14 @@ window.addEventListener(
         closeModal();
       break;
     }})
+
+    form.addEventListener("submit", (event) => {
+      
+      event.preventDefault();
+    
+      console.log("Firstname: " + firstnameTag.value + " Lastname: " + lastnameTag.value + " Email: " + emailTag.value );
+    });
+
+
+    
+  
