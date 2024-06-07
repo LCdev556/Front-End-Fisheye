@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <a tabindex="0" href="index.html"  aria-label="lien vers la page principale" alt="Fisheye Home page"><img tabindex="-1" src="assets/images/logo.png" class="logo" /></a>
+      <a tabindex="0" href="index.html"  aria-label="lien vers la page principale" alt="Fisheye Home page"><img tabindex="-1" src="assets/images/logo.png" alt="logo fisheye" class="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -37,7 +37,7 @@
     </main>
     <div class="lightBox-bground" id="lightBox_modal">
       <div class="lightBox">
-      <i class="fa-solid fa-xmark closeIcon" aria-label="fermeture de la fenetre contextuelle" onclick="closeLightBox()"></i>
+      <i class="fa-solid fa-xmark closeIcon" tabindex="0" aria-label="fermeture de la fenetre contextuelle" onclick="closeLightBox()"></i>
       <i id="previousButton" aria-label="photo précedente" class="previousButton navigationArrow fa-solid fa-chevron-left"></i>
       <div class="lightBoxMediaContainer"></div>
       <p class="lightBoxMediaTitle" ></p>
@@ -47,13 +47,13 @@
     <div class="modal-bground" id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2 tabindex="0"class="formPhotographerContactMe">Contactez-moi</h2>
-          <p tabindex="0" class="formPhotographerName"></p>
-          <img tabindex="0" aria-label="Bouton de fermeture du formulaire de contact" src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 tabindex="1"class="formPhotographerContactMe">Contactez-moi</h2>
+          <p tabindex="2" class="formPhotographerName"></p>
+          <img tabindex="3" alt="Bouton de fermeture du formulaire de contact" aria-label="Bouton de fermeture du formulaire de contact" src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
 					<div
-            class="formData" tabindex="0" data-error="Veuillez entrer 2 caractères ou plus pour le champ du Prénom" data-error-visible="false">
+            class="formData" tabindex="5" data-error="Veuillez entrer 2 caractères ou plus pour le champ du Prénom" data-error-visible="false">
             <label for="first">Prénom</label><br>
             <input
               class="text-control"
@@ -61,46 +61,46 @@
               id="first"
               name="first"
               minlength="2"
-              tabindex="0"
+              tabindex="4"
               aria-label="Champs d'entrer du prénom "
               /><br>
           </div>
 
           <div
-            class="formData" tabindex="0" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom" data-error-visible="false">
+            class="formData" tabindex="7" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom" data-error-visible="false">
             <label for="last">Nom</label><br>
             <input
               class="text-control"
               type="text"
               id="last"
               name="last"
-              tabindex="0"
+              tabindex="6"
               aria-label="Champs d'entrer du nom de famille "
               /><br>
           </div>
 
           <div
-            class="formData" tabindex="0" data-error="Vous devez entrer une adresse mail valide" data-error-visible="false">
+            class="formData" tabindex="9" data-error="Vous devez entrer une adresse mail valide" data-error-visible="false">
             <label for="email">E-mail</label><br>
             <input
               class="text-control"
               type="email"
               id="email"
               name="email"
-              tabindex="0"
+              tabindex="8"
               aria-label="Champs d'entrer de l'adresse mail "
               /><br>
           </div>
 
           <div
-            class="formData" tabindex="0" data-error="Veuillez ecrire votre message" data-error-visible="false">
+            class="formData" tabindex="11" data-error="Veuillez ecrire votre message" data-error-visible="false">
             <label for="message">Votre message</label><br>
             <textarea
               class="text-control"
               id="message"
               name="message"
               required
-              tabindex="0"
+              tabindex="10"
               aria-label="Champs d'entrer du message "
               ></textarea>
               <br>
@@ -110,7 +110,7 @@
             class="contact_button"
             type="submit"
             value="Envoyer"
-            tabindex="0"
+            tabindex="12"
             aria-label="Bouton d'envoi du formulaire "
           />
 				</form>

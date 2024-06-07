@@ -1,7 +1,7 @@
 /**
  * Fonction pour gérer le clic sur l'icône de cœur
- * @param {*} media 
- * @param {*} likesElement 
+ * @param  media 
+ * @param  likesElement 
  */
 function likeHandler(media, likesElement) {
     let currentLikes = parseInt(likesElement.textContent);

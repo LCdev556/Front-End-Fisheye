@@ -37,24 +37,26 @@ const formeSendButton = document.getElementsByClassName('contact_button');
 
 /**
  * Verification de la valeur du champs "prenom"
- * @param {*} firstnameValue 
+ * @param {string} firstnameValue 
  * @returns 
  */
 function isValidFirstname(firstnameValue) {
     const firstNameContainer = firstnameTag.parentNode;
     if (firstnameValue >= 2) {
       firstNameContainer.setAttribute('data-error-visible', 'false');
+      firstNameContainer.setAttribute('data-error'," ")
       
       return true;
       
     }
     firstNameContainer.setAttribute('data-error-visible', 'true');
+    firstNameContainer.setAttribute('data-error',"Veuillez entrer 2 caractères ou plus pour le champ du Prénom")
     
   };
 
 /**
  * Verification de la valeur du champs "Nom"
- * @param {*} lastnameValue 
+ * @param {string} lastnameValue 
  * @returns 
  */
 function isValidLastname(lastnameValue) {
@@ -62,40 +64,45 @@ function isValidLastname(lastnameValue) {
   
   if (lastnameValue >= 2) {
     lastNameContainer.setAttribute('data-error-visible', 'false');
+    lastNameContainer.setAttribute('data-error'," ")
     return true;
   }
   lastNameContainer.setAttribute('data-error-visible', 'true');
+  lastNameContainer.setAttribute('data-error',"Veuillez entrer 2 caractères ou plus pour le champ du nom")
 }
 
 /**
  * Verification de la valeur du champs "email"
- * @param {*} emailValue 
+ * @param {string} emailValue 
  * @returns 
  */
 function isValidEmail(emailValue) {
   const emailContainer = emailTag.parentNode;
   if ((new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")).test(emailValue)) {
     emailContainer.setAttribute('data-error-visible', 'false');
+    emailContainer.setAttribute('data-error'," ")
     return true;
   };
   emailContainer.setAttribute('data-error-visible', 'true');
+  emailContainer.setAttribute('data-error',"Vous devez entrer une adresse mail valide ")
 }
 
 /**
  * Verification de la valeur du champs "message"
- * @param {*} messageValue 
+ * @param {string} messageValue 
  * @returns 
  */
 function isValidMessage(messageValue) {
   const messageContainer = messageTag.parentNode;
   if (messageValue >= 2) {
     messageContainer.setAttribute('data-error-visible', 'false');
-      
+    messageContainer.setAttribute('data-error'," ")
+
     return true;
       
   }
   messageContainer.setAttribute('data-error-visible', 'true');
-    
+  messageContainer.setAttribute('data-error',"Veuillez ecrire votre message ")
 };
 
 firstnameTag.addEventListener('focusout', (event) => {

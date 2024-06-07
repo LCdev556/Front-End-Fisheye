@@ -2,7 +2,7 @@
 /**
  * Construction des elements contenent les informations des photographes
  * 
- * @param {*} photographer 
+ * @param {object} photographer 
  * @returns 
  */
 export function photographerTemplate(photographer) {
@@ -111,8 +111,8 @@ export function photographerTemplate(photographer) {
 /**
  * Construction des media affichés sur la page photographe
  * 
- * @param {*} media 
- * @param {*} selectedPhotographers 
+ * @param {object} media 
+ * @param {object} selectedPhotographers 
  * @returns 
  */
 export function mediaTemplate(media, selectedPhotographers) {
@@ -218,8 +218,8 @@ export function mediaTemplate(media, selectedPhotographers) {
 /**
  * Construction de l'element de la page photographe contenant le nombre de like total et le tarif 
  * 
- * @param {*} selectedMedia 
- * @param {*} selectedPhotographers 
+ * @param {object} selectedMedia 
+ * @param {object} selectedPhotographers 
  * @returns 
  */
 export function getPhotographerScore(selectedMedia, selectedPhotographers){

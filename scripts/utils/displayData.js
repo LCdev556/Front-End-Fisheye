@@ -37,7 +37,7 @@ export async function displayDataPhotographer(photographers) {
 
 /**
  * Organisation des données de la page index
- * @param {*} photographers 
+ * @param  photographers 
  */
 export async function displayDataIndex(photographers) {
     const photographersSection = document.querySelector(".photographer_section");

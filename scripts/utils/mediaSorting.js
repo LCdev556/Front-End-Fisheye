@@ -90,7 +90,7 @@ function sortByDate() {
 
 /**
  * Affichage des media selon le filtre de trie selectioné
- * @param {*} sortChoice 
+ * @param sortChoice 
  */
 function displaySortBy(sortChoice){
 const sortedMedia = sortChoice(mediaInputs);

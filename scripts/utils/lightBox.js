@@ -1,9 +1,11 @@
+
     /**
      * Ouverture de la lightbox
      */
     function openLightBox() {
         const lightBox = document.getElementById("lightBox_modal");
         lightBox.style.display = "block";
+        main.setAttribute("inert","")
     }
     
     /**
@@ -13,6 +15,7 @@
         const lightBox = document.getElementById("lightBox_modal");
         document.querySelector('.lightBoxMediaContainer').innerHTML = ""
         lightBox.style.display = "none";
+        main.removeAttribute("inert","")
     }
     
     let mediaInputs = []
@@ -48,7 +51,7 @@
     
     /**
      * construction du media dans la lightbox 
-     * @param {*} index 
+     * @param {number} index 
      */
     function displayMedia(index) {
         
@@ -112,10 +115,10 @@
     // Récupérez les boutons précédent et suivant
     const previousButton = document.getElementById('previousButton');
     previousButton.tabIndex = 0
-    previousButton.ariaLabel = "Passer au media suivant"
+    previousButton.ariaLabel = "Revenir au media précédant "
     const nextButton = document.getElementById('nextButton');
     nextButton.tabIndex = 0
-    nextButton.ariaLabel = "Revenir au media précédant "
+    nextButton.ariaLabel = "Passer au media suivant"
     
     // Ajoutez des gestionnaires d'événements aux boutons
     previousButton.addEventListener('click', showPreviousMedia);
